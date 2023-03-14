@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
-const slugify = require('slugify');
+const nanoid = require('nanoid');
+
+const basePropertyOptions = {
+  discriminatorKey: 'propertyType',
+  collection: 'properties',
+};
 
 const basePropertySchema = new mongoose.Schema(
   {
@@ -9,6 +14,12 @@ const basePropertySchema = new mongoose.Schema(
       trim: true,
       maxLength: [70, 'A property name cannot have more than 70 charecters'],
       minLength: [10, 'A property name cannot have less than 10 characters'],
+    },
+    adNumber: {
+      type: String,
+      required: true,
+      default: nanoid(18),
+      index: { unique: true },
     },
     slug: String,
     dimensions: {
@@ -25,7 +36,7 @@ const basePropertySchema = new mongoose.Schema(
       type: String,
       enum: {
         values: ['private', 'real estate agency'],
-        message: 'A property must have a seller type',
+        message: 'A property must have a seller type of private or agency',
       },
     },
     createdAt: {
@@ -37,6 +48,7 @@ const basePropertySchema = new mongoose.Schema(
       type: Number,
       required: [true, 'A property must have a price'],
     },
+    builtAt: Date,
     description: {
       type: String,
       trim: true,
@@ -69,6 +81,10 @@ const basePropertySchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
+
+basePropertySchema.pre('save', function (next) {
+  this.slug = this.adNumber;
+});
 
 const baseProperty = mongoose.model('BaseProperty', basePropertySchema);
 
