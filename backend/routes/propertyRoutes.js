@@ -8,4 +8,6 @@ router
   .get(propertyController.getAll)
   .post(propertyController.createListing);
 
+router.route('/building/:adNumber').get(propertyController.getByAdNum);
+
 module.exports = router;
