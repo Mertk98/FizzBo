@@ -1,32 +1,6 @@
 const Building = require('../models/adModels/propertyModels/buildingModel');
+const factoryHandler = require('./factoryController');
 
-exports.getAll = async (req, res, next) => {
-  try {
-    const buildings = await Building.find();
-
-    res.status(200).json({
-      status: 'success',
-      results: buildings.length,
-      data: {
-        data: buildings,
-      },
-    });
-  } catch (err) {
-    next();
-  }
-};
-
-exports.createListing = async (req, res, next) => {
-  try {
-    const building = await Building.create(req.body);
-
-    res.status(201).json({
-      status: 'success',
-      data: {
-        data: building,
-      },
-    });
-  } catch (err) {
-    next();
-  }
-};
+exports.getAll = factoryHandler.getAll(Building);
+exports.getByAdNum = factoryHandler.getByAdNum(Building);
+exports.createListing = factoryHandler.createListing(Building);
