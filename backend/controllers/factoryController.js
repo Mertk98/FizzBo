@@ -1,7 +1,7 @@
 const catchAsync = require('../utils/catchAsync');
 
-exports.getAll = (Model) =>
-  catchAsync(async (req, res, next) => {
+exports.getAll = (Model) => async (req, res, next) => {
+  try {
     const doc = await Model.find();
 
     res.status(201).json({
@@ -10,11 +10,14 @@ exports.getAll = (Model) =>
         data: doc,
       },
     });
-  });
+  } catch (err) {
+    next(err);
+  }
+};
 
-exports.getByAdNum = (Model) =>
-  catchAsync(async (req, res, next) => {
-    const doc = await Model.find(req.params.adNumber);
+exports.getByAdNum = (Model) => async (req, res, next) => {
+  try {
+    const doc = await Model.find({ adNumber: req.params.adNumber });
 
     res.status(201).json({
       status: 'success',
@@ -22,10 +25,13 @@ exports.getByAdNum = (Model) =>
         data: doc,
       },
     });
-  });
+  } catch (err) {
+    next(err);
+  }
+};
 
-exports.createListing = (Model) =>
-  catchAsync(async (req, res, next) => {
+exports.createListing = (Model) => async (req, res, next) => {
+  try {
     const doc = await Model.create(req.body);
 
     res.status(201).json({
@@ -34,4 +40,7 @@ exports.createListing = (Model) =>
         data: doc,
       },
     });
-  });
+  } catch (err) {
+    next(err);
+  }
+};
