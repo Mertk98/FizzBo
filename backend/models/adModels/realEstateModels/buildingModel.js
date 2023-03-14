@@ -1,4 +1,4 @@
-const Base = require('../basePropertyModel');
+const Base = require('./basePropertyModel');
 
 const BuildingSchema = Base.discriminator(
   'Building',
