@@ -1,5 +1,3 @@
-const catchAsync = require('../utils/catchAsync');
-
 exports.getAll = (Model) => async (req, res, next) => {
   try {
     const doc = await Model.find();
