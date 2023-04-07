@@ -17,13 +17,13 @@ const basePropertySchema = new mongoose.Schema(
     },
     adNumber: {
       type: String,
-      required: true,
+      required: [true, 'A property must have an ad number'],
       default: nanoid(18),
       index: { unique: true },
     },
     adType: {
       type: String,
-      required: true,
+      required: [true, 'A property must have a type'],
       enum: ['for sale', 'rental', 'wanted'],
       deafult: 'for sale',
     },
