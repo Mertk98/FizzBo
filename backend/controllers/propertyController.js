@@ -1,6 +1,6 @@
 const Building = require('../models/adModels/propertyModels/buildingModel');
 const Housing = require('../models/adModels/propertyModels/housingModel');
-
+const Land = require('../models/adModels/propertyModels/landModel');
 const factoryHandler = require('./factoryController');
 
 // handler functions for buildings
@@ -12,3 +12,8 @@ exports.createBuildingListing = factoryHandler.createListing(Building);
 exports.getAllHousing = factoryHandler.getAll(Housing);
 exports.getHousingByAdNum = factoryHandler.getByAdNum(Housing);
 exports.createHousingListing = factoryHandler.createListing(Housing);
+
+//handler functions for land
+exports.getAllLand = factoryHandler.getAll(Land);
+exports.getLandByAdNum = factoryHandler.getByAdNum(Land);
+exports.createLandListing = factoryHandler.createListing(Land);
