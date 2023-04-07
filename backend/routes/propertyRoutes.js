@@ -19,4 +19,12 @@ router
 
 router.route('/housing/:adNumber').get(propertyController.getHousingByAdNum);
 
+// Routers for land
+router
+  .route('/land')
+  .get(propertyController.getAllLand)
+  .post(propertyController.createLandListing);
+
+router.route('/land/:adNumber').get(propertyController.getLandByAdNum);
+
 module.exports = router;
