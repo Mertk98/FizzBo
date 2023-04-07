@@ -33,7 +33,7 @@ const basePropertySchema = new mongoose.Schema(
       unit: {
         type: String,
         enum: {
-          values: ['m2', 'ft2'],
+          values: ['m2', 'ft2', 'Ac'],
           message: 'Dimension unit must be either m2 or ft2!',
         },
       },
