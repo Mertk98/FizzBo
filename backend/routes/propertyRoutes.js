@@ -27,4 +27,12 @@ router
 
 router.route('/land/:adNumber').get(propertyController.getLandByAdNum);
 
+// Routers for office
+router
+  .route('/office')
+  .get(propertyController.getAllOffice)
+  .post(propertyController.createOfficeListing);
+
+router.route('/office/:adNumber').get(propertyController.getOfficeByAdNum);
+
 module.exports = router;
