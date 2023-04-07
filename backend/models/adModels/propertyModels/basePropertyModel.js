@@ -21,6 +21,12 @@ const basePropertySchema = new mongoose.Schema(
       default: nanoid(18),
       index: { unique: true },
     },
+    adType: {
+      type: String,
+      required: true,
+      enum: ['for sale', 'rental', 'wanted'],
+      deafult: 'for sale',
+    },
     slug: String,
     dimensions: {
       totalSize: Number,
