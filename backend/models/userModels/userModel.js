@@ -73,6 +73,11 @@ const UserSchema = new mongoose.Schema(
       default: true,
       select: false,
     },
+    role: {
+      type: String,
+      default: 'user',
+      enum: ['user', 'editor', 'admin'],
+    },
   },
   {
     toJson: { virtuals: true },
