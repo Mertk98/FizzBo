@@ -5,6 +5,7 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const cookieSession = require('cookie-session');
 const propertyRouter = require('./routes/propertyRoutes');
+const userRouter = require('./routes/userRoutes');
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use(
 );
 
 app.use('/api/v1/properties', propertyRouter);
+app.use('/api/v1/users', userRouter);
 
 module.exports = app;
