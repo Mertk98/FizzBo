@@ -3,7 +3,7 @@ const Base = require('./basePropertyModel');
 
 const LandSchema = Base.discriminator(
   'Land',
-  new monsooge.Schema({
+  new mongoose.Schema({
     MLS: String,
     taxDetails: {
       amount: Number,
