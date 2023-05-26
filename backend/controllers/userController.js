@@ -1,4 +1,9 @@
-const express = require('express');
 const User = require('../models/userModels/userModel');
+const factoryHandler = require('./factoryController');
 
-const router = express.Router();
+// Basic Controllers for Users
+// Possibly for admin use only!!!
+exports.getAllUsers = factoryHandler.getAll(User);
+exports.getUserById = factoryHandler.getUserByID(User);
+
+//Signup
