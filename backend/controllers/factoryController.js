@@ -1,3 +1,4 @@
+// Basic CRUD operations for all models
 exports.getAll = (Model) => async (req, res, next) => {
   try {
     const doc = await Model.find();
@@ -9,7 +10,10 @@ exports.getAll = (Model) => async (req, res, next) => {
       },
     });
   } catch (err) {
-    next(err);
+    console.log(err);
+    res.status(500).json({
+      status: 'Error',
+    });
   }
 };
 
@@ -24,11 +28,14 @@ exports.getByAdNum = (Model) => async (req, res, next) => {
       },
     });
   } catch (err) {
-    next(err);
+    console.log(err);
+    res.status(500).json({
+      status: 'Error',
+    });
   }
 };
 
-exports.createListing = (Model) => async (req, res, next) => {
+exports.create = (Model) => async (req, res, next) => {
   try {
     const doc = await Model.create(req.body);
 
@@ -39,6 +46,26 @@ exports.createListing = (Model) => async (req, res, next) => {
       },
     });
   } catch (err) {
-    next(err);
+    console.log(err);
+    res.status(500).json({
+      status: 'Error',
+    });
+  }
+};
+
+exports.getUserByID = (Model) => async (req, res, next) => {
+  try {
+    const doc = await Model.find({ _id: req.params.id });
+    res.status(201).json({
+      status: 'success',
+      data: {
+        data: doc,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      status: 'Error',
+    });
   }
 };
