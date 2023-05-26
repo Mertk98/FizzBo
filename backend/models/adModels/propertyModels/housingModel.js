@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Base = require('basePropertyModel');
+const Base = require('./basePropertyModel');
 
 const HousingSchema = Base.discriminator(
   'Housing',
