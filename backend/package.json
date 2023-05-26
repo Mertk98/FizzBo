@@ -4,12 +4,14 @@
   "description": "Highly scalable, modern world app",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "ndb": "ndb server.js"
   },
   "author": "Mert Kilic",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.2",
+    "cookie-session": "^2.0.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -19,5 +21,8 @@
     "nanoid": "^3.3.4",
     "slugify": "^1.6.5",
     "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "ndb": "^1.1.5"
   }
 }
