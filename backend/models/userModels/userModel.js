@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema(
       maxLength: [25, 'A username must have at most 25 characters!'],
       validate: {
         validator: (val) =>
-          validator.isAlphaNumeric(val, [en - US], {
+          validator.isAlphanumeric(val, ['en-US'], {
             ignore: '_-',
           }),
         message: "A user name can only contain letters, numbers, '_' and '-'.",
@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A user must have a name!'],
       validate: {
-        validator: (val) => validator.isAlpha(val, [en - US]),
+        validator: (val) => validator.isAlpha(val, ['en-US']),
         message: 'A name can only contain letters',
       },
     },
@@ -29,7 +29,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: [true, 'A user must have a last name'],
       validate: {
-        validator: (val) => validator.isAlpha(val, [en - US]),
+        validator: (val) => validator.isAlpha(val, ['en-US']),
         message: 'A last name can only contain letters',
       },
     },
