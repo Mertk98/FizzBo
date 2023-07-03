@@ -69,3 +69,19 @@ exports.getUserByID = (Model) => async (req, res, next) => {
     });
   }
 };
+
+exports.delete = (Model) => async (req, res, next) => {
+  try {
+    const doc = await Model.findByIdAndDelete(req.params.id);
+
+    if (!doc) {
+      console.log("Error: can't find the document");
+      next();
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      status: 'Error',
+    });
+  }
+};
