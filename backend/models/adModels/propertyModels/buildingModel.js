@@ -10,7 +10,10 @@ const BuildingSchema = Base.discriminator(
       type: String,
       enum: ['Furnace', 'Boiler', 'Heat pump', 'Gas', 'Electric', 'Fireplace'],
     },
-    Features: [String],
+    Features: {
+      type: Array,
+      default: [],
+    },
   })
 );
 

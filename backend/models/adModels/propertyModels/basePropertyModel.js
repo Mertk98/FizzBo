@@ -18,6 +18,7 @@ const basePropertySchema = new mongoose.Schema(
     adNumber: {
       type: String,
       required: [true, 'A property must have an ad number'],
+      unique: true,
       default: nanoid(18),
       index: { unique: true },
     },

@@ -6,7 +6,10 @@ const router = express.Router();
 
 // Basic user routes
 router.route('/').get(UserController.getAllUsers);
-router.route('/:id').get(UserController.getUserById);
+router
+  .route('/:id')
+  .get(UserController.getUserById)
+  .delete(UserController.deleteUser);
 
 // Sign-up routers
 router.route('/signup').post(authController.signup);

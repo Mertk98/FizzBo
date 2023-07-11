@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon server.js",
-    "ndb": "ndb server.js"
+    "start:production": "SET NODE_ENV=production&&nodemon server.js",
+    "debug": "ndb server.js"
   },
   "author": "Mert Kilic",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "mongoose": "^7.0.1",
     "morgan": "^1.10.0",
     "nanoid": "^3.3.4",
+    "pretty-error": "^4.0.0",
     "slugify": "^1.6.5",
     "validator": "^13.9.0"
   },

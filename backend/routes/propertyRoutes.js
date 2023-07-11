@@ -3,13 +3,18 @@ const propertyController = require('../controllers/propertyController');
 
 const router = express.Router();
 
+// !!!!!Add patch routes!!!!!!
+
 // Routers for buildings
 router
   .route('/building')
   .get(propertyController.getAllBuildings)
   .post(propertyController.createBuildingListing);
 
-router.route('/building/:adNumber').get(propertyController.getBuildingByAdNum);
+router
+  .route('/building/:adNumber')
+  .get(propertyController.getBuildingByAdNum)
+  .delete(propertyController.deleteBuildingListing);
 
 // Routers for houses and apartments
 router
@@ -17,7 +22,10 @@ router
   .get(propertyController.getAllHousing)
   .post(propertyController.createHousingListing);
 
-router.route('/housing/:adNumber').get(propertyController.getHousingByAdNum);
+router
+  .route('/housing/:adNumber')
+  .get(propertyController.getHousingByAdNum)
+  .delete(propertyController.deleteHousingListing);
 
 // Routers for land
 router
@@ -25,7 +33,10 @@ router
   .get(propertyController.getAllLand)
   .post(propertyController.createLandListing);
 
-router.route('/land/:adNumber').get(propertyController.getLandByAdNum);
+router
+  .route('/land/:adNumber')
+  .get(propertyController.getLandByAdNum)
+  .delete(propertyController.deleteLandListing);
 
 // Routers for office
 router
@@ -33,6 +44,9 @@ router
   .get(propertyController.getAllOffice)
   .post(propertyController.createOfficeListing);
 
-router.route('/office/:adNumber').get(propertyController.getOfficeByAdNum);
+router
+  .route('/office/:adNumber')
+  .get(propertyController.getOfficeByAdNum)
+  .delete(propertyController.deleteOfficeListing);
 
 module.exports = router;
